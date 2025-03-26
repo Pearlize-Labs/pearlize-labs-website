@@ -1,7 +1,7 @@
 :root {
     --primary: #6D00D4;
     --secondary: #8708FF;
-    --light: #f9f4fd;
+    --light: #e0baff;
     --dark: #444444;
 }
 
@@ -403,20 +403,20 @@ h6,
     justify-content: center;
 }
 
+.testimonial-carousel .owl-dot.active {
+    width: 30px;
+    background: var(--primary) !important;
+}
+
 .testimonial-carousel .owl-dot {
     position: relative;
     display: inline-block;
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    background: #DDDDDD;
+    background: #ba90f5 !important;
     border-radius: 2px;
     transition: .5s;
-}
-
-.testimonial-carousel .owl-dot.active {
-    width: 30px;
-    background: var(--primary);
 }
 
 .testimonial-carousel .owl-item.center {
@@ -520,6 +520,10 @@ h6,
     background-color: #6D00D4 !important;
 }
 
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #f6edff !important;
+}
 
 .back-to-top {
     position: fixed;
