@@ -1,7 +1,7 @@
 :root {
     --primary: #6D00D4;
     --secondary: #8708FF;
-    --light: #f9f4fd;
+    --light: #e0baff;
     --dark: #444444;
 }
 
@@ -265,7 +265,7 @@ h6,
 }
 
 
-/* Section Title */
+/* Section */
 .section-title::before {
     position: absolute;
     content: "";
@@ -286,17 +286,6 @@ h6,
     width: 90px;
     height: 3px;
 }
-
-/* .section-title::after {
-    position: absolute;
-    content: "";
-    width: 6px;
-    height: 5px;
-    bottom: 0px;
-    background: #FFFFFF;
-    -webkit-animation: section-title-run 5s infinite linear;
-    animation: section-title-run 5s infinite linear;
-} */
 
 .section-title::after {
     position: absolute;
@@ -335,12 +324,12 @@ h6,
 
 .section-title.text-center::after {
     -webkit-animation: section-title-run-center 5s infinite linear;
-    animation: section-title-run-center 5s infinite linear;
+    animation: glowing-bar 2s infinite ease-in-out;
 }
 
 .section-title.section-title-sm::after {
     -webkit-animation: section-title-run-sm 5s infinite linear;
-    animation: section-title-run-sm 5s infinite linear;
+    animation: glowing-bar 2s infinite ease-in-out;
 }
 
 @-webkit-keyframes section-title-run {
@@ -366,19 +355,34 @@ h6,
 
 .service-item .service-icon {
     margin-bottom: 30px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary);
-    border-radius: 2px;
-    transform: rotate(-45deg);
+    background: linear-gradient(135deg, var(--primary) 30%, #0056b3);
+    border-radius: 12px;
+    transform: rotate(-15deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
 }
 
 .service-item .service-icon i {
-    transform: rotate(45deg);
+    transform: rotate(15deg);
+    font-size: 28px;
+    color: white;
+    transition: transform 0.3s ease-in-out;
 }
+
+.service-item .service-icon:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-item .service-icon:hover i {
+    transform: rotate(0deg);
+}
+
 
 .service-item a.btn {
     position: absolute;
@@ -396,11 +400,40 @@ h6,
 
 
 /* Testimonial */
+
+.testimonial-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; 
+    background-color: #f9f9f9;
+}
+
+.testimonial-item .pt-4.pb-5 {
+    flex-grow: 1;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.testimonial-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
 .testimonial-carousel .owl-dots {
     margin-top: 15px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
+}
+
+.testimonial-carousel .owl-dot.active {
+    width: 30px;
+    background: var(--primary) !important;
 }
 
 .testimonial-carousel .owl-dot {
@@ -409,14 +442,9 @@ h6,
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    background: #DDDDDD;
+    background: #ba90f5 !important;
     border-radius: 2px;
     transition: .5s;
-}
-
-.testimonial-carousel .owl-dot.active {
-    width: 30px;
-    background: var(--primary);
 }
 
 .testimonial-carousel .owl-item.center {
@@ -425,79 +453,73 @@ h6,
 }
 
 .testimonial-carousel .owl-item .testimonial-item {
-    transition: .5s;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .testimonial-carousel .owl-item.center .testimonial-item {
     background: #FFFFFF !important;
     box-shadow: 0 0 30px #DDDDDD;
+    transform: scale(1.05); 
+    margin: 0 10px; 
 }
 
+/* contact */
 
-/* Team */
-.team-item {
-    transition: .5s;
+.contact-item {
+    position: relative;
+    height: 220px; 
+    padding: 20px; 
+    transition: 0.4s ease-in-out;
+    background-color: #f8f9fa; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.team-social {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+.contact-item .contact-icon {
+    margin-bottom: 15px; 
+    width: 50px; 
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .5s;
+    background-color: var(--primary); 
+    border-radius: 50%; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
 }
 
-.team-social a.btn {
-    position: relative;
-    margin: 0 3px;
-    margin-top: 100px;
-    opacity: 0;
+.contact-item .contact-icon i {
+    font-size: 22px; 
+    color: white; 
+    transition: transform 0.3s ease-in-out;
 }
 
-.team-item:hover {
-    box-shadow: 0 0 30px #DDDDDD;
+.contact-item .contact-icon:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); 
 }
 
-.team-item:hover .team-social {
-    background: rgba(9, 30, 62, .7);
+.contact-item .contact-icon:hover i {
+    transform: rotate(360deg); 
 }
 
-.team-item:hover .team-social a.btn:first-child {
-    opacity: 1;
-    margin-top: 0;
-    transition: .3s 0s;
+.contact-item h6 {
+    font-size: 18px; 
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0;
 }
 
-.team-item:hover .team-social a.btn:nth-child(2) {
-    opacity: 1;
-    margin-top: 0;
-    transition: .3s .05s;
-}
-
-.team-item:hover .team-social a.btn:nth-child(3) {
-    opacity: 1;
-    margin-top: 0;
-    transition: .3s .1s;
-}
-
-.team-item:hover .team-social a.btn:nth-child(4) {
-    opacity: 1;
-    margin-top: 0;
-    transition: .3s .15s;
-}
-
-.team-item .team-img img,
-.blog-item .blog-img img  {
-    transition: .5s;
-}
-
-.team-item:hover .team-img img,
-.blog-item:hover .blog-img img {
-    transform: scale(1.15);
+.contact-item p {
+    font-size: 14px; 
+    color: #777; 
+    margin-top: 0.5rem;
+    line-height: 1.5;
 }
 
 
@@ -515,11 +537,28 @@ h6,
     color: #6D00D4 !important;
 }
 
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: #bb72ff !important;
+}
+
 .bg-primary {
     --bs-bg-opacity: 1;
     background-color: #6D00D4 !important;
 }
 
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #f7f3fc !important;
+}
+
+.link-animated a {
+    text-decoration: none;
+}
+
+.no-underline {
+    text-decoration: none;
+}
 
 .back-to-top {
     position: fixed;
